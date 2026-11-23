@@ -1,0 +1,44 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/images"
+public_folder: "/images"
+
+site_url: https://haaf.uk
+display_url: https://haaf.uk
+logo_url: /images/logo.webp
+
+collections:
+  - name: "content"
+    label: "Page Content"
+    files:
+      - name: "homepage"
+        label: "Home Page Sections"
+        file: "src/content/site-content.json"
+        fields:
+          - { label: "Top Notice", name: "topNotice", widget: "string", default: "MIDDLE WALLOP, HAMPSHIRE · SO20 8DY" }
+          - { label: "Hero Eyebrow", name: "heroEyebrow", widget: "string", default: "HISTORIC ARMY AIRCRAFT FLIGHT · MIDDLE WALLOP" }
+          - { label: "Hero Title", name: "heroTitle", widget: "string", default: "Keeping Army Aviation History Alive." }
+          - { label: "Hero Subtitle", name: "heroSubtitle", widget: "text", default: "Dedicated to preserving, flying, and sharing the unique living heritage of British Army aviation from our base at the Army Aviation Centre, Middle Wallop." }
+          - { label: "About Title", name: "aboutTitle", widget: "string", default: "Army Aviation Heritage" }
+          - { label: "About Narrative", name: "aboutText", widget: "markdown" }
+          - { label: "STEM Title", name: "stemTitle", widget: "string", default: "STEM & Educational Outreach" }
+          - { label: "STEM Narrative", name: "stemText", widget: "markdown" }
+          - { label: "Support Text", name: "supportText", widget: "text" }
+          - { label: "Shop Link URL", name: "shopUrl", widget: "string", default: "https://shop.haaf.uk" }
+          - { label: "Charity Number", name: "charityNumber", widget: "string", default: "Registered Charity No. 1182285" }
+
+  - name: "events"
+    label: "Appearances & Events"
+    folder: "src/content/events"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Event Title", name: "title", widget: "string" }
+      - { label: "Date or Date Range", name: "date", widget: "string" }
+      - { label: "Location / Venue", name: "location", widget: "string" }
+      - { label: "Aircraft Attending", name: "aircraft", widget: "string" }
+      - { label: "Event Status", name: "status", widget: "select", options: ["Confirmed", "Provisional", "Completed"], default: "Confirmed" }
+      - { label: "Description / Notes", name: "description", widget: "markdown", required: false }
+      - { label: "External Ticket / Info Link", name: "link", widget: "string", required: false }
